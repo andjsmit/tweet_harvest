@@ -24,7 +24,20 @@ class TweetsController < ApplicationController
   # POST /tweets
   # POST /tweets.json
   def create
-    @tweet = Tweet.new(tweet_params)
+
+    tp = tweet_params
+    if Tweeter.exists?(twuser_id: tweet_params[:twuser_id])
+      tp[:tweeter] = Tweeter.find_by twuser_id: tweet_params[:twuser_id]
+    else
+      tweeter = Tweeter.new(twuser_id: tweet_params[:twuser_id])
+      tweeter.save
+      tp[:tweeter] = tweeter
+    end
+
+    puts "*******************"
+    puts tp.inspect
+    puts "*******************"
+    @tweet = Tweet.new(tp)
 
     respond_to do |format|
       if @tweet.save
@@ -69,6 +82,6 @@ class TweetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
-      params.require(:tweet).permit(:tw_id, :content, :url, :retweets, :favorites, :data_set_twuser_id, :post_date, :tweeter)
+      params.require(:tweet).permit(:tw_id, :twuser_id, :content, :url, :retweets, :favorites, :data_set_twuser_id, :post_date, :tweeter)
     end
 end
