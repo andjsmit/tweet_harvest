@@ -39,6 +39,7 @@ class TweetsController < ApplicationController
 
     # Save new tweet with tweeter.
     @tweet = Tweet.new(tp)
+    @tweet.retrieve_tweet
 
     respond_to do |format|
       if @tweet.save
