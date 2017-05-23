@@ -1,0 +1,37 @@
+<%= form_with(model: tweeter, local: true) do |form| %>
+  <% if tweeter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tweeter.errors.count, "error") %> prohibited this tweeter from being saved:</h2>
+
+      <ul>
+      <% tweeter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :twuser_id %>
+    <%= form.text_field :twuser_id, id: :tweeter_twuser_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :screen_name %>
+    <%= form.text_field :screen_name, id: :tweeter_screen_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :tweeter_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url, id: :tweeter_url %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
