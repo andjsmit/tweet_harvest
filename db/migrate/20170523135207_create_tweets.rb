@@ -8,7 +8,7 @@ class CreateTweets < ActiveRecord::Migration[5.1]
       t.integer :favorites
       t.string :data_set_twuser_id
       t.date :post_date
-      t.refernces :tweeter
+      t.belongs_to :tweeter, index: true
 
       t.timestamps
     end
