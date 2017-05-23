@@ -26,6 +26,8 @@ class TweetsController < ApplicationController
   def create
 
     # Check if tweeter exists, if not create.
+    # .permt (below) returns a new hash each time called
+    # so need to copy params to change.
     tp = tweet_params
     if Tweeter.exists?(twuser_id: tweet_params[:twuser_id])
       tp[:tweeter] = Tweeter.find_by twuser_id: tweet_params[:twuser_id]

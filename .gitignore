@@ -24,3 +24,5 @@
 
 # Ignore RVM files
 .ruby-*
+# Ignore application configuration
+/config/application.yml
