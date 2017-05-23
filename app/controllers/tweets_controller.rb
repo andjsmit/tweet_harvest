@@ -25,6 +25,7 @@ class TweetsController < ApplicationController
   # POST /tweets.json
   def create
 
+    # Check if tweeter exists, if not create.
     tp = tweet_params
     if Tweeter.exists?(twuser_id: tweet_params[:twuser_id])
       tp[:tweeter] = Tweeter.find_by twuser_id: tweet_params[:twuser_id]
@@ -34,9 +35,7 @@ class TweetsController < ApplicationController
       tp[:tweeter] = tweeter
     end
 
-    puts "*******************"
-    puts tp.inspect
-    puts "*******************"
+    # Save new tweet with tweeter.
     @tweet = Tweet.new(tp)
 
     respond_to do |format|
