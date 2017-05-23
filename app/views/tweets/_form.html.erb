@@ -1,0 +1,57 @@
+<%= form_with(model: tweet, local: true) do |form| %>
+  <% if tweet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+
+      <ul>
+      <% tweet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tw_id %>
+    <%= form.text_field :tw_id, id: :tweet_tw_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_field :content, id: :tweet_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url, id: :tweet_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :retweets %>
+    <%= form.number_field :retweets, id: :tweet_retweets %>
+  </div>
+
+  <div class="field">
+    <%= form.label :favorites %>
+    <%= form.number_field :favorites, id: :tweet_favorites %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_set_twuser_id %>
+    <%= form.text_field :data_set_twuser_id, id: :tweet_data_set_twuser_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :post_date %>
+    <%= form.date_select :post_date, id: :tweet_post_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tweeter %>
+    <%= form.text_field :tweeter, id: :tweet_tweeter %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
