@@ -7,6 +7,7 @@ class CreateTweets < ActiveRecord::Migration[5.1]
       t.integer :retweets
       t.integer :favorites
       t.string :data_set_twuser_id
+      t.string :twuser_id
       t.date :post_date
       t.belongs_to :tweeter, index: true
 
