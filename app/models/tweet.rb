@@ -17,6 +17,7 @@ class Tweet < ApplicationRecord
     self.url = tweet.uri
     self.retweets = tweet.retweet_count.to_s
     self.favorites = tweet.favorite_count.to_s
+    self.post_date = tweet.created_at
   end
 
 end
