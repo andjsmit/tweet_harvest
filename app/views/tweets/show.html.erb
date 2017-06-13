@@ -27,7 +27,7 @@
 
 <p>
   <strong>Data set twuser:</strong>
-  <%= @tweet.data_set_twuser_id %>
+  <%= link_to @ds_tweeter.name, @ds_tweeter %>
 </p>
 
 <p>
@@ -37,7 +37,7 @@
 
 <p>
   <strong>Tweeter:</strong>
-  <%= @tweet.tweeter %>
+  <%= link_to @tweeter.name, @tweeter %>
 </p>
 
 <%= link_to 'Edit', edit_tweet_path(@tweet) %> |

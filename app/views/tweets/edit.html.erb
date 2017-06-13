@@ -1,5 +1,9 @@
 <h1>Editing Tweet</h1>
 
+<% if flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+
 <%= render 'form', tweet: @tweet %>
 
 <%= link_to 'Show', @tweet %> |

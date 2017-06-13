@@ -17,6 +17,21 @@
   </div>
 
   <div class="field">
+    <%= form.collection_check_boxes :data_set_ids, DataSet.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Twitter user ID" %>
+    <%= form.text_field :twuser_id, id: :tweet_twuser_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+  <hr/>
+
+  <div class="field">
     <%= form.label :content %>
     <%= form.text_field :content, id: :tweet_content %>
   </div>
@@ -46,12 +61,5 @@
     <%= form.date_select :post_date, id: :tweet_post_date %>
   </div>
 
-  <div class="field">
-    <%= form.label "Twitter user ID" %>
-    <%= form.text_field :twuser_id, id: :tweet_twuser_id %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

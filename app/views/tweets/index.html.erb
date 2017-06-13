@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Tw</th>
+      <th>Tweet ID</th>
       <th>Content</th>
       <th>Url</th>
       <th>Retweets</th>
@@ -27,7 +27,7 @@
         <td><%= tweet.favorites %></td>
         <td><%= tweet.data_set_twuser_id %></td>
         <td><%= tweet.post_date %></td>
-        <td><%= tweet.tweeter %></td>
+        <td><%= link_to tweet.tweeter.name, tweet.tweeter %></td>
         <td><%= link_to 'Show', tweet %></td>
         <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
         <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>

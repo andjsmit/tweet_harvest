@@ -1,3 +1,4 @@
 class DataSet < ApplicationRecord
-  has_and_belongs_to_many :tweets
+  has_many :data_set_tweets
+  has_many :tweets, through: :data_set_tweets
 end

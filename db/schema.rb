@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523135512) do
+ActiveRecord::Schema.define(version: 20170609190221) do
+
+  create_table "data_set_tweets", force: :cascade do |t|
+    t.integer "data_set_id"
+    t.integer "tweet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["data_set_id"], name: "index_data_set_tweets_on_data_set_id"
+    t.index ["tweet_id"], name: "index_data_set_tweets_on_tweet_id"
+  end
 
   create_table "data_sets", force: :cascade do |t|
     t.string "name"
@@ -45,13 +54,6 @@ ActiveRecord::Schema.define(version: 20170523135512) do
     t.datetime "updated_at", null: false
     t.index ["tw_id"], name: "index_tweets_on_tw_id", unique: true
     t.index ["tweeter_id"], name: "index_tweets_on_tweeter_id"
-  end
-
-  create_table "tweets_data_sets", id: false, force: :cascade do |t|
-    t.integer "tweet_id"
-    t.integer "data_set_id"
-    t.index ["data_set_id"], name: "index_tweets_data_sets_on_data_set_id"
-    t.index ["tweet_id"], name: "index_tweets_data_sets_on_tweet_id"
   end
 
 end

@@ -10,6 +10,9 @@ class TweetsController < ApplicationController
   # GET /tweets/1
   # GET /tweets/1.json
   def show
+    # Make tweeter info available to view
+    @tweeter = Tweeter.find @tweet.tweeter_id
+    @ds_tweeter = Tweeter.find @tweet.data_set_twuser_id
   end
 
   # GET /tweets/new
@@ -39,13 +42,13 @@ class TweetsController < ApplicationController
 
     # Save new tweet with tweeter.
     @tweet = Tweet.new(tp)
-    @tweet.retrieve_tweet
 
     respond_to do |format|
       if @tweet.save
         format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
         format.json { render :show, status: :created, location: @tweet }
       else
+        flash[:alert] = "Tweet could not be saved."
         format.html { render :new }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
@@ -84,6 +87,6 @@ class TweetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
-      params.require(:tweet).permit(:tw_id, :twuser_id, :content, :url, :retweets, :favorites, :data_set_twuser_id, :post_date, :tweeter)
+      params.require(:tweet).permit(:tw_id, :twuser_id, :content, :url, :retweets, :favorites, :data_set_twuser_id, :post_date, :tweeter, data_set_ids:[])
     end
 end
