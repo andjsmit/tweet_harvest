@@ -10,7 +10,6 @@ class Tweet < ApplicationRecord
     begin
       retrieve_tweet
     rescue
-      puts "Could not retrieve tweet #" + self.tw_id.to_s
       return false
     end
     super
@@ -29,10 +28,11 @@ class Tweet < ApplicationRecord
     self.retweets = tweet.retweet_count.to_s
     self.favorites = tweet.favorite_count.to_s
     self.post_date = tweet.created_at
-    self.data_set_twuser_id = self.tweeter_id
-    if self.tweeter_id != tweet.user.id
-      puts "Data Set Tweeter : " + tweet.user.id.to_s
-      puts "Actual Tweeter: " + tweet.user.id.to_s
+    if not Tweeter.exists?(twuser_id: self.data_set_twuser_id)
+      ds_tweeter = Tweeter.new(twuser_id: self.data_set_twuser_id)
+      ds_tweeter.save
+    end
+    if self.data_set_twuser_id != tweet.user.id
       if Tweeter.exists?(twuser_id: tweet.user.id)
         tweeter = Tweeter.find_by twuser_id: tweet.user.id
         self.tweeter_id = tweeter.id

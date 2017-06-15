@@ -15,7 +15,7 @@ dfreelon_dsc = 'This file is an archive of Twitter data in CSV format generated 
   ' Deen Freelon, Ph.D.'\
   ' dfreelon@gmail.com'\
   ' @dfreelon'\
-  ' dfreelon.org'\ 
+  ' dfreelon.org'
 
 DataSet.create(name: 'dfreelon algeria', :description => dfreelon_dsc, source: 'dfreelon.org', filename: 'algeria_ids.csv')
 DataSet.create(name: 'dfreelon bahrain', :description => dfreelon_dsc, source: 'dfreelon.org', filename: 'bahrain_ids.csv')

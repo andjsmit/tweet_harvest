@@ -12,7 +12,7 @@ class TweetsController < ApplicationController
   def show
     # Make tweeter info available to view
     @tweeter = Tweeter.find @tweet.tweeter_id
-    @ds_tweeter = Tweeter.find @tweet.data_set_twuser_id
+    @ds_tweeter = Tweeter.find_by twuser_id: @tweet.data_set_twuser_id
   end
 
   # GET /tweets/new
