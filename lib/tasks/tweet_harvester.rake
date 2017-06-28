@@ -12,7 +12,7 @@ namespace :tweet_harvester do
     # test file /Users/andjsmit/tmp/tweet_data/tweet_test.csv
     log.info "File : #{csv_file}, Data Set : #{data_set}"
 
-    CSV.foreach('/Users/andjsmit/tmp/tweet_data/tweet_test.csv') do |row|
+    CSV.foreach(csv_file) do |row|
        tweet_id = row[0]
        tweeter_id = row[1]
        # If tweet exists then update data_set_ids, else create new tweet.
